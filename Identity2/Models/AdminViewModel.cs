@@ -15,8 +15,9 @@ namespace IdentitySample.Models
     public class EditUserViewModel
     {
         public string Id { get; set; }
+        public string UserName { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
+        //[Required(AllowEmptyStrings = false)]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
