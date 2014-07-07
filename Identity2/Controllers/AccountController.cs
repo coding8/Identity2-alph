@@ -72,7 +72,7 @@ namespace IdentitySample.Controllers
 
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -83,7 +83,9 @@ namespace IdentitySample.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    // 登陆错误次数
+                    int loginCounts=SignInManager.UserManager.FindByName(model.UserName).AccessFailedCount;
+                    ModelState.AddModelError("", "Invalid login attempt." + loginCounts);
                     return View(model);
             }
         }
