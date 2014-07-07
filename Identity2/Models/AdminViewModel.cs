@@ -23,4 +23,13 @@ namespace IdentitySample.Models
 
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
+
+    //显示用户和角色列表
+    public class ListUserAndRoleViewModel
+    {
+        public string UserId { get; set; }
+        public string UserName { get; set; }
+        public string RoleId { get; set; }
+        public string RoleName { get; set; }
+    }
 }

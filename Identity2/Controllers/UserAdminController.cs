@@ -234,5 +234,20 @@ namespace IdentitySample.Controllers
             }
             return View();
         }
+
+        // List user and roles
+        public ActionResult ListUserAndRole()
+        {
+            ApplicationDbContext db=new ApplicationDbContext();
+
+            // raw sql
+            var query=db.Database.SqlQuery<ListUserAndRoleViewModel>(
+                    @"Select u.id UserId,u.UserName,ur.RoleId,r.Name RoleName
+                    from AspNetUsers u
+                    left join AspNetUserRoles ur on u.id=ur.UserId
+                    left join AspNetRoles r on ur.RoleId=r.id"
+                );
+            return View(query);
+        }
     }
 }
