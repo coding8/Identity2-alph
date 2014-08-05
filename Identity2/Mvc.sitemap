@@ -28,7 +28,7 @@
       <mvcSiteMapNode title="User" controller="UsersAdmin" action="Index" />
       <mvcSiteMapNode title="Role" controller="RolesAdmin" action="Index"/>
       <mvcSiteMapNode title="UserAndRole" controller="UsersAdmin" action="ListUserAndRole" />
-      <mvcSiteMapNode title="Reset Password" controller="Password" action="Index"/>
+      <mvcSiteMapNode title="Reset Password" controller="Account" action="ResetPassword"/>
     </mvcSiteMapNode>
   </mvcSiteMapNode>
 
